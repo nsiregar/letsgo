@@ -1,8 +1,10 @@
 it's work in progress
 
-to start app just run
+update to use `docker` and `docker-compose`, to run use command
 
 ```
-$ bin/start
+$ docker-compose up -d
 ```
+
+browse in `http://localhost`
 
