@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  db:
+    build:
+      context: ./postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - 5432
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bin/start
+    volumes:
+      - .:/usr/src/app
+    expose:
+      - 5000
+    depends_on:
+      - db
+
+  nginx:
+    build:
+      context: ./nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - web
+

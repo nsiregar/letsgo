@@ -1,0 +1,7 @@
+[FORMAT]
+max-line-length=119
+indent-string='    '
+expected-line-ending-format=LF
+
+[MESSAGES CONTROL]
+disable=missing-docstring
