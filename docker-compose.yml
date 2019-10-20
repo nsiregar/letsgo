@@ -16,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+       WAIT_HOSTS: db:5432
     command: bin/start
     volumes:
       - .:/usr/src/app

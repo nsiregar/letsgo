@@ -16,11 +16,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-prod
-    command: bin/start
+    environment:
+      WAIT_HOSTS: db:5432
+    command: /wait && bin/start
     volumes:
       - .:/usr/src/app
     ports:
       - 5000:5000
     depends_on:
       - db
+
+  nginx:
+    build:
+      context: ./nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - web
 
