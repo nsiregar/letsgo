@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:3.7.4-alpine
+FROM python:3.7.5-alpine
 
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -18,6 +18,8 @@ RUN apk update && \
 # Add and install requirements
 COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
+
+COPY ./dev-requirements.txt /usr/src/app/dev-requirements.txt
 RUN pip install -r dev-requirements.txt
 
 # Clean Up
