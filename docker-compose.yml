@@ -16,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    user: 1000:1000
+    restart: always
     environment:
        WAIT_HOSTS: db:5432
     command: >
