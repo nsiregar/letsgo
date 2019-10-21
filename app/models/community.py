@@ -4,11 +4,9 @@ from db.application import Base
 from sqlalchemy import Column, DateTime, Integer, String, Text
 
 
-class User(Base):
+class Community(Base):
     id = Column(Integer, primary_key=True)
-    first_name = Column(String, nullable=False)
-    last_name = Column(String)
-    email = Column(Text, nullable=False)
-    password_digest = Column(Text)
+    name = Column(String, nullable=False)
+    description = Column(Text)
     created_at = Column(DateTime)
     updated_at = Column(DateTime, default=datetime.utcnow)

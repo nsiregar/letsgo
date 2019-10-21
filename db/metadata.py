@@ -1,3 +1,3 @@
+from db.application import Base
 from app.models.user import User
-
-meta = [User.metadata]
+from app.models.community import Community

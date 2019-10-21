@@ -1,0 +1,4 @@
+#!/bin/bash
+
+LETSGO_ENV=test alembic upgrade head
+LETSGO_ENV=development alembic upgrade head
