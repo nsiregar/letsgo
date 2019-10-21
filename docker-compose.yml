@@ -18,7 +18,9 @@ services:
       dockerfile: Dockerfile
     environment:
        WAIT_HOSTS: db:5432
-    command: bin/start
+    command: >
+        sh -c "/wait
+        && bin/start"
     volumes:
       - .:/usr/src/app
     expose:

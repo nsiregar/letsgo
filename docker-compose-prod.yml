@@ -18,7 +18,9 @@ services:
       dockerfile: Dockerfile-prod
     environment:
       WAIT_HOSTS: db:5432
-    command: /wait && bin/start
+    command: >
+        sh -c "/wait
+        && bin/start"
     volumes:
       - .:/usr/src/app
     ports:
