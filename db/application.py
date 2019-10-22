@@ -1,6 +1,6 @@
 from config.application import settings
-from databases import Database
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
@@ -11,7 +11,7 @@ class BaseModel:
 
 
 Base = declarative_base(cls=BaseModel)
-database = Database(settings.SQLALCHEMY_DATABASE_URI)
+database = create_engine(settings.SQLALCHEMY_DATABASE_URI, pool_pre_ping=True)
 
 Session = sessionmaker()
 Session.configure(bind=database)
