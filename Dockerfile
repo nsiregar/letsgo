@@ -17,8 +17,6 @@ RUN apk update && \
 
 # Add and install requirements
 COPY ./requirements.txt /usr/src/app/requirements.txt
-RUN pip install -r requirements.txt
-
 COPY ./dev-requirements.txt /usr/src/app/dev-requirements.txt
 RUN pip install -r dev-requirements.txt
 
