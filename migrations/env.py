@@ -23,10 +23,9 @@ fileConfig(config.config_file_name)
 # target_metadata = mymodel.Base.metadata
 
 from config.application import settings
-from db.metadata import Base
-
 config.set_main_option("sqlalchemy.url", str(settings.SQLALCHEMY_DATABASE_URI))
-target_metadata = Base.metadata
+
+from db.application import database as target_metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

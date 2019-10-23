@@ -1,21 +1,7 @@
-from config.application import settings
-from sqlalchemy.ext.declarative import declarative_base, declared_attr
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from importlib import import_module
+from pkgutil import iter_modules
+from app.wsgi import database
+from app import models
 
-
-class BaseModel:
-    @declared_attr
-    def __tablename__(cls):
-        return f"{ cls.__name__.lower() }s"
-
-
-Base = declarative_base(cls=BaseModel)
-database = create_engine(settings.SQLALCHEMY_DATABASE_URI, pool_pre_ping=True)
-
-Session = sessionmaker()
-Session.configure(bind=database)
-Session.configure(autocommit=False)
-Session.configure(autoflush=False)
-
-session = Session()
+for (module_loader, name, ispkg) in iter_modules(models.__path__):
+    import_module(f"app.models.{name}", __package__)

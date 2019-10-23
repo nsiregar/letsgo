@@ -1,14 +1,8 @@
-from datetime import datetime
-
-from db.application import Base
-from sqlalchemy import Column, DateTime, Integer, String, Text
+from app.wsgi import database as db
+from db.model import BaseModel
 
 
-class User(Base):
-    id = Column(Integer, primary_key=True)
-    first_name = Column(String, nullable=False)
-    last_name = Column(String)
-    email = Column(Text, nullable=False)
-    password_digest = Column(Text)
-    created_at = Column(DateTime)
-    updated_at = Column(DateTime, default=datetime.utcnow)
+class User(BaseModel):
+    __tablename__ = "users"
+    id = db.Column(db.Integer(), primary_key=True)
+    first_name = db.Column(db.String(), nullable=False)

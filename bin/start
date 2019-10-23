@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$LETSGO_ENV" == "development" ] || [ -z $LETSGO_ENV ]; then
-    uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload
+    uvicorn app.wsgi:app --host 0.0.0.0 --port 5000 --reload
 else
-    uvicorn app.main:app --host 0.0.0.0 --port 5000
+    uvicorn app.wsgi:app --host 0.0.0.0 --port 5000
 fi
