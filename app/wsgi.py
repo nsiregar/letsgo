@@ -1,7 +1,7 @@
-from starlette.applications import Starlette
 from gino.ext.starlette import Gino
+from starlette.applications import Starlette
 
-from app.errors import errors
+from app.events import errors
 from config.application import settings
 from routes import applications
 
